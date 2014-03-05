@@ -1,4 +1,4 @@
-package com.cenfotec.springdata.pojo;
+package com.cenfotec.universidad.pojo;
 
 public class EstudiantePOJO {
 
@@ -8,8 +8,7 @@ public class EstudiantePOJO {
 	private String telefono;
 	
 	public EstudiantePOJO() {
-		super();
-		
+		super();		
 	}
 
 	public int getEstudianteId() {
@@ -43,6 +42,5 @@ public class EstudiantePOJO {
 	public void setTelefono(String telefono) {
 		this.telefono = telefono;
 	}
-	
 	
 }

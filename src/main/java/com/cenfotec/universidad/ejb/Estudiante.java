@@ -1,4 +1,4 @@
-package com.cenfotec.springdata.ejb;
+package com.cenfotec.universidad.ejb;
 
 import java.io.Serializable;
 import java.util.List;

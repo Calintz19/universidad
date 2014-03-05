@@ -1,4 +1,4 @@
-package com.cenfotec.springdata.config;
+package com.cenfotec.universidad.config;
 
 import java.util.Properties;
 
@@ -23,11 +23,11 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration
 @EnableTransactionManagement(proxyTargetClass = true)
-@EnableJpaRepositories("com.cenfotec.springdata.repositories")
+@EnableJpaRepositories("com.cenfotec.universidad.repositories")
 public class HibernateConfig {
 
 	private String driverClassName = "com.mysql.jdbc.Driver";
-    private String url = "jdbc:mysql://localhost:3306/springdata";
+    private String url = "jdbc:mysql://localhost:3306/universidad";
     private String username = "root"; 
     private String password = "";
     
@@ -59,7 +59,7 @@ public class HibernateConfig {
 
         LocalContainerEntityManagerFactoryBean factory = new LocalContainerEntityManagerFactoryBean();
         factory.setJpaVendorAdapter(vendorAdapter);
-        factory.setPackagesToScan("com.cenfotec.springdata.ejb");
+        factory.setPackagesToScan("com.cenfotec.universidad.ejb");
         factory.setDataSource(dataSource);
 
         Properties properties = new Properties();

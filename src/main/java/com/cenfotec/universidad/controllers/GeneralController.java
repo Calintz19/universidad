@@ -1,4 +1,4 @@
-package com.cenfotec.springdata.controllers;
+package com.cenfotec.universidad.controllers;
 
 import java.util.Locale;
 
@@ -14,7 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 @RequestMapping(value = "/")
 public class GeneralController {
-
+	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public ModelAndView home(Locale locale, Model model, HttpServletRequest request, HttpServletResponse response) {				
 		ModelAndView mav = new ModelAndView();

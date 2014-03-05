@@ -1,4 +1,4 @@
-package com.cenfotec.springdata.repositories;
+package com.cenfotec.universidad.repositories;
 
 import org.springframework.data.repository.CrudRepository;
 import com.cenfotec.springdata.ejb.Player;

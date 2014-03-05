@@ -1,4 +1,4 @@
-package com.cenfotec.springdata.ejb;
+package com.cenfotec.universidad.ejb;
 
 import java.io.Serializable;
 import java.util.List;
@@ -26,17 +26,16 @@ public class Curso implements Serializable{
 	
 	private List<Estudiante> estudiantes;
 	
-	//@CollectionOfElements
-    //@JoinTable(
-        //table=@Table(name="STUDENT_COURSE"),
-        //joinColumns=@JoinColumn(name="COURSE_ID")
-    //)
-    //private Set<JoinedStudentCourse> joined = new HashSet<JoinedStudentCourse>();
+	@CollectionOfElements
+    @JoinTable(
+        table=@Table(name="STUDENT_COURSE"),
+        joinColumns=@JoinColumn(name="COURSE_ID")
+    )
+    private Set<JoinedStudentCourse> joined = new HashSet<JoinedStudentCourse>();
 			
 	public Curso() {
 		super();
 	}
-
 
 	public int getCursoId() {
 		return cursoId;
@@ -61,7 +60,5 @@ public class Curso implements Serializable{
 	public void setCarrera(String carrera) {
 		this.carrera = carrera;
 	}
-	
-	
 	
 }

@@ -1,4 +1,4 @@
-package com.cenfotec.springdata.pojo;
+package com.cenfotec.universidad.pojo;
 
 public class CursoPOJO {
 	
@@ -7,8 +7,7 @@ public class CursoPOJO {
 	private String carrera;
 	
 	public CursoPOJO() {
-		super();
-		
+		super();		
 	}
 
 	public int getCursoId() {
@@ -34,7 +33,5 @@ public class CursoPOJO {
 	public void setCarrera(String carrera) {
 		this.carrera = carrera;
 	}
-	
-	
-	
+
 }

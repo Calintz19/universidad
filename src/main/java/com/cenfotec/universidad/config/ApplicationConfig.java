@@ -1,4 +1,4 @@
-package com.cenfotec.springdata.config;
+package com.cenfotec.universidad.config;
 
 import java.util.List;
 import java.util.Locale;
@@ -26,7 +26,7 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 @Configuration
 @EnableWebMvc
-@ComponentScan(basePackages = {"com.cenfotec.springdata"})
+@ComponentScan(basePackages = {"com.cenfotec.universidad"})
 public class ApplicationConfig extends WebMvcConfigurerAdapter {
 
 	@Autowired

@@ -1,4 +1,4 @@
-package com.cenfotec.springdata.config;
+package com.cenfotec.universidad.config;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -10,8 +10,8 @@ import org.springframework.web.context.request.RequestContextListener;
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
 import org.springframework.web.servlet.DispatcherServlet;
 
-import com.cenfotec.springdata.config.PassthroughFilter;
-import com.cenfotec.springdata.config.WSFilter;
+import com.cenfotec.universidad.config.PassthroughFilter;
+import com.cenfotec.universidad.config.WSFilter;
 import com.sun.jersey.spi.spring.container.servlet.SpringServlet;
 
 public class ApplicationInitializer implements WebApplicationInitializer {
@@ -22,7 +22,7 @@ public class ApplicationInitializer implements WebApplicationInitializer {
 		final AnnotationConfigWebApplicationContext root = new AnnotationConfigWebApplicationContext();
 		
 		root.setServletContext(servletContext);
-		root.scan("com.cenfotec.springdata.config");
+		root.scan("com.cenfotec.universidad.config");
 		root.refresh();
 		
 		servletContext.addListener(new ContextLoaderListener(root));
@@ -34,7 +34,7 @@ public class ApplicationInitializer implements WebApplicationInitializer {
 		
 		final Dynamic jerseyServlet = servletContext.addServlet("jerseyServlet", new SpringServlet());
 		jerseyServlet.setLoadOnStartup(2);
-		jerseyServlet.setInitParameter("com.sun.jersey.config.property.packages", "com.cenfotec.springdata");
+		jerseyServlet.setInitParameter("com.sun.jersey.config.property.packages", "com.cenfotec.universidad");
 		jerseyServlet.setInitParameter("com.sun.jersey.api.json.POJOMappingFeature", "true");
 		jerseyServlet.addMapping("/rest/*");
 	

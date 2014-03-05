@@ -1,4 +1,4 @@
-package com.cenfotec.springdata.config;
+package com.cenfotec.universidad.config;
 
 import java.io.IOException;
 
@@ -11,16 +11,17 @@ import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.context.support.SpringBeanAutowiringSupport;
 
-@WebFilter(filterName="passthroughFilter",urlPatterns="/*")
-public class PassthroughFilter implements Filter {
+@WebFilter(filterName="wsFilter",urlPatterns="/rest/protected/*")
+public class WSFilter implements Filter {
 
-	final Logger logger = LoggerFactory.getLogger(PassthroughFilter.class);
-	
+	final Logger logger = LoggerFactory.getLogger(WSFilter.class);
+
 	@Override
 	public void destroy() {
 	}
@@ -28,9 +29,19 @@ public class PassthroughFilter implements Filter {
 	@Override
 	public void doFilter(ServletRequest request, ServletResponse response,
 			FilterChain chain) throws IOException, ServletException {
+		
 		HttpServletRequest servletRequest = (HttpServletRequest)request;
 	    HttpServletResponse servletResponse = (HttpServletResponse) response;
-	    chain.doFilter(servletRequest, servletResponse);
+		
+	    HttpSession currentSession = servletRequest.getSession();
+	    
+	    System.out.println("Session Object ------> " + currentSession.getAttribute("idUser"));
+		if (currentSession.getAttribute("idUser") != null) {
+			chain.doFilter(servletRequest, servletResponse);
+		} else {
+			logger.debug("Rejected: " + servletRequest.toString());
+			servletResponse.sendError(HttpServletResponse.SC_UNAUTHORIZED);
+		}
 	}
 
 	@Override
