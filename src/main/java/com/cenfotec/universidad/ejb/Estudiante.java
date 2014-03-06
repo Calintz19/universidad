@@ -5,12 +5,10 @@ import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Transient;
+import javax.persistence.OneToMany;
+import javax.persistence.GeneratedValue;
 
 @Entity
 public class Estudiante implements Serializable {
@@ -20,25 +18,21 @@ public class Estudiante implements Serializable {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int estudianteId;
-	@Transient
 	private String nombre;
 	private String email;
-	private String telefono;
-	
-	//Relaciones
-	//@ManyToOne(fetch=FetchType.LAZY)
-	//@JoinColumn(name="fk_cursoId")
-	//private Set<JoinedStudentCourse> joined = new HashSet<JoinedStudentCourse>();
+	private String telefono;	
+	private List<EstudianteXCurso> estudiantesXCurso;
 		
-	//@CollectionOfElements
-    //@JoinTable(
-        //table=@Table(name="STUDENT_COURSE"),
-        //joinColumns=@JoinColumn(name="STUDENT_ID")
-    //)
- 
-	
-	public Estudiante() {
+		public Estudiante() {
 		super();
+	}
+	
+	public Estudiante(int pid, String pnombre, String pemail, String ptelefono, List<EstudianteXCurso> pestudiantes) {
+		this.estudianteId = pid;
+		this.nombre = pnombre;
+		this.email = pemail;
+		this.telefono = ptelefono;
+		this.estudiantesXCurso = pestudiantes;
 	}
 	
 	public int getEstudianteId() {
@@ -48,7 +42,16 @@ public class Estudiante implements Serializable {
 	public void setEstudianteId(int estudianteId) {
 		this.estudianteId = estudianteId;
 	}
+	
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "estudiante")
+	public List<EstudianteXCurso> getEstudiantesXCurso() {
+		return this.estudiantesXCurso;
+	}	
 
+	public void setEstudiantesXCurso(List<EstudianteXCurso> pestudiantes){
+		this.estudiantesXCurso = pestudiantes;
+	}
+	
 	public String getNombre() {
 		return nombre;
 	}

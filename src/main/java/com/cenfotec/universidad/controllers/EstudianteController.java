@@ -1,5 +1,5 @@
 package com.cenfotec.universidad.controllers;
 
-public class TeamController {
+public class EstudianteController {
 	
 }
